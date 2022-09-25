@@ -117,20 +117,15 @@ public class ProductView extends VerticalLayout {
             noti.setDuration(500);
             noti.setPosition(Notification.Position.BOTTOM_START);
         });
-
         b_DeleteProduct.addClickListener(event -> {
 
-
         });
-
         productCost.addKeyPressListener(Key.ENTER, e ->{
             callPrice();
         });
-
         productProfit.addKeyPressListener(Key.ENTER, e ->{
             callPrice();
         });
-
         productList.addValueChangeListener(event ->{
             if(!productList.getValue().equals("")){
                 atProduct = WebClient.create().get()
@@ -141,9 +136,7 @@ public class ProductView extends VerticalLayout {
                 productProfit.setValue(atProduct.getProductProfit()+"");
                 productPrice.setValue(atProduct.getProductPrice());
             }
-
         });
-
     }
 
     public void clearProduct(){
@@ -152,7 +145,6 @@ public class ProductView extends VerticalLayout {
         productProfit.setValue("0");
         productPrice.setValue(0.0);
     }
-
     public void callPrice(){
         double numCost = Double.parseDouble(productCost.getValue());
         double numProfit = Double.parseDouble(productProfit.getValue());
@@ -160,7 +152,6 @@ public class ProductView extends VerticalLayout {
                 .retrieve().bodyToMono(Double.class).block();
         productPrice.setValue(number);
     }
-
     public void productList(){
 //        ArrayList<Product> list_product = new ArrayList<>();
         ArrayList<Product> productAll = WebClient.create()

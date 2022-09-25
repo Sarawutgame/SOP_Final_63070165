@@ -11,11 +11,6 @@ import java.util.List;
 public class ProductService {
     @Autowired
     private ProductRepository productRepository;
-
-//    public ProductService(ProductRepository productRepository) {
-//        this.productRepository = productRepository;
-//    }
-
     @RabbitListener(queues = "AddProductQueue")
     public boolean addProduct(Product product){
         try{
@@ -24,9 +19,7 @@ public class ProductService {
         }catch (Exception e){
             return false;
         }
-
     }
-
     @RabbitListener(queues = "UpdateProductQueue")
     public boolean updateProduct(Product product){
         try {
@@ -36,7 +29,6 @@ public class ProductService {
             return false;
         }
     }
-
     @RabbitListener(queues = "DeleteProductQueue")
     public boolean deleteProduct(Product product){
         try{
@@ -50,8 +42,6 @@ public class ProductService {
     @RabbitListener(queues = "GetAllProductQueue")
     public List<Product> getAllProduct(String message){
         try{
-//            System.out.println(productRepository.findAll());
-//            System.out.println(message);
             return productRepository.findAll();
         }catch (Exception e){
             System.out.println(e);
@@ -67,5 +57,4 @@ public class ProductService {
             return null;
         }
     }
-
 }

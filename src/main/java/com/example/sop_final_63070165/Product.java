@@ -16,7 +16,6 @@ public class Product implements Serializable {
     private double productCost;
     private double productProfit;
     private double productPrice;
-
     public Product() {
     }
 

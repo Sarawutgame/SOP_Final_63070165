@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorPriceController {
     @Autowired
     private CalculatorPriceService calculatorPriceService;
-
     @RequestMapping(value = "/getPrice/{cost}/{profit}", method = RequestMethod.GET)
     public double serviceGetProducts(@PathVariable("cost") double cost,
                                      @PathVariable("profit") double profit){
